@@ -15,16 +15,37 @@ subtitle = ""
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
 
 [[feature]]
+  icon = "connectdevelop"
+  icon_pack = "fab"
+  name = "Supply Chain Management"
+  description = "100%"  
+
+
+[[feature]]
   icon = "r-project"
   icon_pack = "fab"
   name = "R"
-  description = "90%"
+  description = "80%"
+  
+  
+
+[[feature]]
+  icon = "python"
+  icon_pack = "fab"
+  name = "Python"
+  description = "80%"
   
 [[feature]]
   icon = "chart-line"
   icon_pack = "fas"
   name = "Statistics"
-  description = "100%"  
+  description = "80%"  
+ 
+[[feature]]
+  icon = "quote-right"
+  icon_pack = "fas"
+  name = "Emacs"
+  description = "20%"
   
 [[feature]]
   icon = "camera-retro"
