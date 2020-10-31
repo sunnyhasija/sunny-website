@@ -17,8 +17,8 @@ organizations:
 bio: My research interests include the use of AI and Machine learning in Supply Chain Decision Making.
 
 interests:
-- Supply Chain Management
-- Artificial Intelligence
+- Supply Chain Costs
+- Artificial Intelligence use in Decision Making
 - Technology Trust
 
 education:
@@ -65,4 +65,4 @@ user_groups:
 - Visitors
 ---
 
-Sunny Hasija is a PhD candidate majoring in Logistics at the Fisher College of Business at the Ohio State University. His research interests include Artificial Intelligence, Machine Learning and robotic automation use in Supply Chains Management. He also maintains www.specialtopicforums.com, and is involved in CSCMP and BDAA local chapters in Columbus, OH. 
+Sunny Hasija is a PhD candidate majoring in Logistics at the Fisher College of Business at the Ohio State University. His research interests include Artificial Intelligence, Machine Learning and robotic automation use in Supply Chain Management. He also maintains www.specialtopicforums.com - an aggregator of calls for papers in SCM and related fields. Sunny is also an active member of CSCMP and BDAA local chapters in Columbus, OH. 

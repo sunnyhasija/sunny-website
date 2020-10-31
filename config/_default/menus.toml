@@ -22,7 +22,10 @@
   name = "Publications"
   url = "#featured"
   weight = 40
-
+[[main]]
+  name = "Calls for Papers"
+  url = "https://www.specialtopicforums.com"
+  weight = 50
 [[main]]
   name = "Contact"
   url = "#contact"
