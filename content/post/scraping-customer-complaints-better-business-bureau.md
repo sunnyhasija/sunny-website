@@ -12,7 +12,7 @@ highlight = true
 
 ## Introduction {#introduction}
 
-Customer complaints offer a unique insight into the sentiment around a product or service. From a company's perspective, scraping the reviews of their products sold on a third party platform may allow for a better understanding of the choices and preferences of their customers. Moreover, tracking customer complaints for competitors may also allow an organization to develop a competitive advantage with their own products and services.
+Customer complaints offer a unique insight into the sentiment around a product or service. From a company's perspective, scraping the reviews of their products sold on a third party platform may allow for a better understanding of the choices and preferen fces of their customers. Moreover, tracking customer complaints for competitors may also allow an organization to develop a competitive advantage with their own products and services.
 
 From an academic perspective, customer complaints offer a window towards Electronic Logistics Service Quality (eLSQ) ([Rao et al. 2011](https://onlinelibrary-wiley-com.proxy.lib.ohio-state.edu/doi/full/10.1111/j.2158-1592.2011.01014.x?casa%5Ftoken=KCFnZ%5FoaccQAAAAA%3AxxzI2rZd9MEt5ZV9EN0NGUx6bLGpjFcKMuGL92FMqyxCilUoJRwBs4bApCrJynpTFuL3MmH70idNl90)). Content analysis of the complaints can help not only in qualitiative studies, but could also aid in operationalizing of constructs related to eLSQ and other customer centric theories.
 

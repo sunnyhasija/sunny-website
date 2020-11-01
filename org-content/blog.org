@@ -1,16 +1,15 @@
+* Posts
 #+hugo_base_dir: ../
 #+hugo_section: post
-
-* Blog Posts
 ** DONE Scraping Customer Complaints - Better Business Bureau
 :PROPERTIES:
 :EXPORT_FILE_NAME: scraping-customer-complaints-better-business-bureau
 :EXPORT_DATE: 2020-11-01
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER:  :tags ["Scraping" "Qualitative Data" "Content Analysis" "Methods"] :subtitle "The why and how behind scraping customer complaints from the Better Business Bureau" :featured true :categories ["Python"] :highlight true 
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER:  :tags ["Scraping" "Qualitative Data" "Content Analysis" "Methods"] :subtitle "The why and how behind scraping customer complaints from the Better Business Bureau" :featured true :categories ["Python"] :highlight true
 :END:
 *** Introduction
 
-Customer complaints offer a unique insight into the sentiment around a product or service. From a company's perspective, scraping the reviews of their products sold on a third party platform may allow for a better understanding of the choices and preferences of their customers. Moreover, tracking customer complaints for competitors may also allow an organization to develop a competitive advantage with their own products and services.
+Customer complaints offer a unique insight into the sentiment around a product or service. From a company's perspective, scraping the reviews of their products sold on a third party platform may allow for a better understanding of the choices and preferen fces of their customers. Moreover, tracking customer complaints for competitors may also allow an organization to develop a competitive advantage with their own products and services.
 
 From an academic perspective, customer complaints offer a window towards Electronic Logistics Service Quality (eLSQ) ([[https://onlinelibrary-wiley-com.proxy.lib.ohio-state.edu/doi/full/10.1111/j.2158-1592.2011.01014.x?casa_token=KCFnZ_oaccQAAAAA%3AxxzI2rZd9MEt5ZV9EN0NGUx6bLGpjFcKMuGL92FMqyxCilUoJRwBs4bApCrJynpTFuL3MmH70idNl90][Rao et al. 2011]]). Content analysis of the complaints can help not only in qualitiative studies, but could also aid in operationalizing of constructs related to eLSQ and other customer centric theories.
 
@@ -30,7 +29,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait                 # to wait for an element to become available on the page
-from selenium.webdriver.support import expected_conditions as EC        
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.touch_actions import TouchActions        # to allow for clicking of buttons
 from selenium.webdriver.common.action_chains import ActionChains        # to allow for clicking of buttons, and linking it to other behavior
 import time
@@ -70,7 +69,7 @@ try:
         try:
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             #find the more button
-            more_button = WebDriverWait(driver,10).until(EC.visibility_of_element_located((By.XPATH,"/html/body/div[1]/div/div/div/main/div/div[5]/div/div[3]/button"))) 
+            more_button = WebDriverWait(driver,10).until(EC.visibility_of_element_located((By.XPATH,"/html/body/div[1]/div/div/div/main/div/div[5]/div/div[3]/button")))
             ActionChains(driver).move_to_element(more_button).click().perform()
             time.sleep(6)
             count=count+1
@@ -92,4 +91,4 @@ print("Finished!")
 
 **** Next Steps
 
-After the data has been written to a text file, we can do various types of text analytics on it. These might include frequency counts, sentiment analysis or topic modeling. But that is for a future blog post. 
+After the data has been written to a text file, we can do various types of text analytics on it. These might include frequency counts, sentiment analysis or topic modeling. But that is for a future blog post.
