@@ -12,16 +12,16 @@ highlight = true
 
 ## Introduction {#introduction}
 
-Customer complaints offer a unique insight into the sentiment around a product or service. From a company's perspective, scraping the reviews of their products sold on a third party platform may allow for a better understanding of the choices and preferen fces of their customers. Moreover, tracking customer complaints for competitors may also allow an organization to develop a competitive advantage with their own products and services.
+Customer complaints offer a unique insight into the sentiment around a product or service. From a company's perspective, scraping the reviews of their products sold on a third party platform may allow for a better understanding of the choices and preferences of their customers. Moreover, tracking customer complaints for competitors may also allow an organization to develop a competitive advantage with their own products and services.
 
-From an academic perspective, customer complaints offer a window towards Electronic Logistics Service Quality (eLSQ) ([Rao et al. 2011](https://onlinelibrary-wiley-com.proxy.lib.ohio-state.edu/doi/full/10.1111/j.2158-1592.2011.01014.x?casa%5Ftoken=KCFnZ%5FoaccQAAAAA%3AxxzI2rZd9MEt5ZV9EN0NGUx6bLGpjFcKMuGL92FMqyxCilUoJRwBs4bApCrJynpTFuL3MmH70idNl90)). Content analysis of the complaints can help not only in qualitiative studies, but could also aid in operationalizing of constructs related to eLSQ and other customer centric theories.
+From an academic perspective, customer complaints offer a window towards Electronic Logistics Service Quality (eLSQ) ([Rao et al. 2011](https://onlinelibrary-wiley-com.proxy.lib.ohio-state.edu/doi/full/10.1111/j.2158-1592.2011.01014.x?casa%5Ftoken=KCFnZ%5FoaccQAAAAA%3AxxzI2rZd9MEt5ZV9EN0NGUx6bLGpjFcKMuGL92FMqyxCilUoJRwBs4bApCrJynpTFuL3MmH70idNl90)). Content analysis of the complaints can help not only in qualitative studies, but could also aid in operationalizing of constructs related to eLSQ and other customer-centric theories.
 
 This post goes over a quick method to collect data from the Better Business Bureau. This post is not meant to be comprehensive, but merely serves as a proof of concept of how such data could be collected.
 
 
 ## Scraping the Better Business Bureau: {#scraping-the-better-business-bureau}
 
-For the purposes of this excercise, we will be using `Python 3.7` to scrape the data. We will make particular use of the `Selenium` libraries, and the `Firefox webdriver` to emulate the behavior of an actual user browsing the website.
+For the purposes of this exercise, we will be using `Python 3.7` to scrape the data. We will make particular use of the `Selenium` libraries, and the `Firefox webdriver` to emulate the behavior of an actual user browsing the website.
 
 Note: You can find tutorials about how to use [selenium here](https://selenium-python.readthedocs.io/). You will need to make sure you install the correct version of the webdriver based on the version of firefox you are currently using.
 
@@ -58,9 +58,9 @@ The above code will open the complaints page for Amazon's profile on the BBB. th
 
 ### Gathering the data {#gathering-the-data}
 
-There are multiple ways to get the data from this page. I am particulary interested in `Problems with the Product or Service` category of complaints. Although there exist multiple ways to navigate to this page using python, the easy way for me to scrape this category is simply click on the 11,314 (which is the number of current issues on BBB in this category) and then scrape that.
+There are multiple ways to get the data from this page. I am particularly interested in `Problems with the Product or Service` category of complaints. Although there exist multiple ways to navigate to this page using python, the easy way for me to scrape this category is simply click on the 11,314 (which is the number of current issues on BBB in this category) and then scrape that.
 
-After I click on the `11,314` (as of Nov 1, 2020), the new page loads and shows me about 20 complaints at a time. At the bottom of this page is a `More` button, which upon clicking loads an additional 20 complaints, with the `More` button available again. So to load all the complaints I can interatively scroll to the bottom of the page, click the button, and scroll to the bottom again till no more complaints are available.
+After I click on the `11,314` (as of Nov 1, 2020), the new page loads and shows me about 20 complaints at a time. At the bottom of this page is a `More` button, which upon clicking loads an additional 20 complaints, with the `More` button available again. So to load all the complaints we can iteratively scroll to the bottom of the page, click the button, and scroll to the bottom again till no more complaints are available.
 
 After all the complaints are available, we can take all the text present on the page and dump it into a text file for further processing.
 The code block below scrapes all the complaints and puts them in a text file. It also handles `TimeoutError` in case one arises.
