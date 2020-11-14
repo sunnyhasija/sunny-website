@@ -12,15 +12,15 @@ highlight = true
 
 We have already scraped and stored the reddit comments from /r/CouriersofReddit, /r/PostMates, and /r/DoorDash. The data is now in a pickle file, and is of the following format:
 
-PK: Primary Key - the reddit post ID
-Title: Title of the post.
-URL: link to the post.
-Time: time of creation of the post.
-Comments: the particular comment.
-Comment\_Time: The time the comment was created.
-Is\_Root\_Comment: Identifies if the comment is a root comment in the post submission.
-Comment\_Parent: What which comment is the parent of this comment, has the comment ID in it.
-Comment\_PK: the comment ID.
+-   PK: Primary Key - the reddit post ID
+-   Title: Title of the post.
+-   URL: link to the post.
+-   Time: time of creation of the post.
+-   Comments: the particular comment.
+-   Comment\_Time: The time the comment was created.
+-   Is\_Root\_Comment: Identifies if the comment is a root comment in the post submission.
+-   Comment\_Parent: What which comment is the parent of this comment, has the comment ID in it.
+-   Comment\_PK: the comment ID.
 
 Import all the libraries that are needed - and read in the pickle into a data frame.
 
