@@ -236,8 +236,8 @@ wordcloud.to_file("/home/cantos/Dropbox/School/My Papers in Progress/Crowdsource
 #+end_src
 
 #+RESULTS:
-*** Sentiment Analyis
-Although there are multiple types of sentiment analysis engines out there, I do not want to use a custom training paradigm, or me having to train the model myself (trying to save some times and cycles). Moreover, there have been recent developments with sentiment analysis that I want to leverage. Enter VADER.
+*** Sentiment Analysis
+Although there are multiple types of sentiment analysis engines out there, I do not want to use a custom training paradigm, or me having to train the model myself (trying to save some time and computer cycles). Moreover, there have been recent developments with sentiment analysis that I want to leverage. Enter VADER.
 **** VADER
 VADER stands for Valence Aware Dictionary sEntiment Reasoner, and is a lexicon and rule-based sentiment analysis tool that is *specifically attuned to sentiments expressed in social media*. This makes it particularly useful for analysing reddit comments. VADER uses a combination of a sentiment lexicon - which is a list of lexical features (words) which are generally labelled according to their semantic orientation as either positive or negative, and also the polarity of the positive and negative sentiment.
 

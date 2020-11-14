@@ -108,9 +108,9 @@ wordcloud.to_file("/home/cantos/Dropbox/School/My Papers in Progress/Crowdsource
 ```
 
 
-## Sentiment Analyis {#sentiment-analyis}
+## Sentiment Analysis {#sentiment-analysis}
 
-Although there are multiple types of sentiment analysis engines out there, I do not want to use a custom training paradigm, or me having to train the model myself (trying to save some times and cycles). Moreover, there have been recent developments with sentiment analysis that I want to leverage. Enter VADER.
+Although there are multiple types of sentiment analysis engines out there, I do not want to use a custom training paradigm, or me having to train the model myself (trying to save some time and computer cycles). Moreover, there have been recent developments with sentiment analysis that I want to leverage. Enter VADER.
 
 
 ### VADER {#vader}
@@ -160,5 +160,3 @@ writefile = postSentimentDF.to_csv('/home/cantos/Dropbox/School/My Papers in Pro
 ## Write the file to pickle for other scripts to use.
 postSentimentDF.to_pickle("/home/cantos/Dropbox/School/My Papers in Progress/Crowdsourced Delivery/sentiment-search-result-flat-comment.pkl")
 ```
-
-_home/cantos_.emacs.d/.local/straight/build-28.0.50/pdf-tools/build/server/autobuild -i _home/cantos_.emacs.d/.local/straight/build-28.0.50/pdf-tools/
