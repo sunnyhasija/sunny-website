@@ -37,9 +37,9 @@ social:
 - icon: envelope
   icon_pack: fas
   link: '/#contact'  # For a direct email link, use "mailto:test@example.org".
-- icon: twitter
+- icon: linkedin-in
   icon_pack: fab
-  link: https://twitter.com/StuffedKulcha
+  link: https://www.linkedin.com/in/ahasija/ 
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.com/citations?user=Vam6NJgAAAAJ&hl
