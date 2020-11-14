@@ -155,7 +155,7 @@ We might need to save the file as a TSV for sharing with others. The TSV preserv
 *** Searching the corpus for keywords
 Ideally, we want to be able to create a smaller dataset for analysis from this big data set. We create an array with all the search terms we want to search for, and then assign the search result into another data frame. We can then print out how many posts and comments are present in the resulting dataset.
 
-#+begin_src python :results output :session comment-analysis
+#+begin_src python :results output :session comment-analysis :exports both
 
 search_terms = ['race', 'racism', 'racist', 'discriminate']
 searchResult = df[df['Comments'].str.contains('|'.join(search_terms))] #creates the result dataframe.
@@ -170,7 +170,7 @@ print("Total number of Posts", len(pd.unique(searchResult['PK'])))
 **** Top 10 posts in the dataset
 After we have created the dataset, it is evident from the last step that there are 1147 comments in 583 posts. This indicates that there might be some posts with very few comments, and some with many. Let's get a list of the top 10 posts with the most comments.
 
-#+begin_src python :session comment-analysis :results output
+#+begin_src python :session comment-analysis :results output :exports both
 
 topPosts = searchResult['Title'].value_counts()[:10].index.tolist()
 for post in topPosts:
@@ -194,7 +194,7 @@ So I was delivering the other day...
 
 **** Save the dataset
 We might want to save this dataset as a pickle and a TSV if needed. Lets do that.
-#+begin_src python :session comment-analysis :results output
+#+begin_src python :session comment-analysis :results output 
 
 writefile = searchResult.to_csv('/home/cantos/Dropbox/School/My Papers in Progress/Crowdsourced Delivery/search-result-flat-comment.tsv', sep='\t')
 ## Write the file to pickle for other scripts to use.
@@ -210,7 +210,7 @@ I want to evaluate quickly what kind of themes are in the present in the data se
 First thing we do is to put all the text in the comments into one variable, and look at how many words there are in total.
 
 
-#+begin_src python :session comment-analysis :results output
+#+begin_src python :session comment-analysis :results output 
 
 text="".join(comment for comment in searchResult.Comments)
 print ("There are {} words in the combination of all comments.".format(len(text)))
@@ -255,7 +255,7 @@ You can download vader via pip, using the following command
 We then want to create a new dataframe, I could do it in existing dataframe, but I am trying to not get it corrupted. Create the new DF with these additional columns =Comment_Neg,Comment_Neu, Comment_Pos, Comment_Comp=.
 
 We can then take the sentiment of each comment in the dataframe, and add all the information back to the new data frame. 
-#+begin_src python :results output :session comment-analysis
+#+begin_src python :results output :session comment-analysis :exports both
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 column_names = ["PK","Title", "URL", "Time", "Comment_PK", "Comments", "Comment_Time", "Comment_Score", "Is_Root_Comment","Comment_Parent", "Comment_Neg","Comment_Neu", "Comment_Pos", "Comment_Comp"]

@@ -55,6 +55,11 @@ print("The number of comments with search terms:", len(searchResult.index))
 print("Total number of Posts", len(pd.unique(searchResult['PK'])))
 ```
 
+```text
+The number of comments with search terms: 1147
+Total number of Posts 583
+```
+
 
 ### Top 10 posts in the dataset {#top-10-posts-in-the-dataset}
 
@@ -65,6 +70,19 @@ After we have created the dataset, it is evident from the last step that there a
 topPosts = searchResult['Title'].value_counts()[:10].index.tolist()
 for post in topPosts:
     print(post)
+```
+
+```text
+I feel like this promotes racism rather than helps..
+Deactivated Because a Racist manager not only called the police on me, but also reported me to Doordash
+Postmates driver encounters deranged woman
+The MPLS cop that killed George Floyd can't get doordash delivered.
+I hit my 1000th delivery today. A few thoughts about my experiences.
+Never thought I'd get one of these...
+When the $3 orders can no longer keep you afloat
+Courier (rightfully) fears for his life
+This is why your food is cold
+So I was delivering the other day...
 ```
 
 
@@ -151,6 +169,17 @@ for index,comment in searchResult.iterrows():
     #print(comment)
 
 print(postSentimentDF.head())
+```
+
+```text
+       PK                                              Title                     URL                 Time Comment_PK  ... Comment_Parent Comment_Neg Comment_Neu Comment_Pos Comment_Comp
+0  fshgt1                                                Lol  https://redd.it/fshgt1  2020-03-31 17:45:09    fm3gjaj  ...      t3_fshgt1       0.298       0.702       0.000      -0.9163
+1  gbzdoc  Well everyone. My first controversial delivery...  https://redd.it/gbzdoc  2020-05-02 03:14:19    fp8kqba  ...     t1_fp8dz0u       0.100       0.814       0.086      -0.0772
+2  gbzdoc  Well everyone. My first controversial delivery...  https://redd.it/gbzdoc  2020-05-02 03:14:19    fp968s1  ...     t1_fp8p0fs       0.000       0.860       0.140       0.8923
+3  hjgrtz                        I was hacked, $338 was lost  https://redd.it/hjgrtz  2020-07-01 19:07:32    fwme4y4  ...      t3_hjgrtz       0.025       0.930       0.045       0.2732
+4  hjgrtz                        I was hacked, $338 was lost  https://redd.it/hjgrtz  2020-07-01 19:07:32    fwmg9a5  ...     t1_fwme4y4       0.038       0.962       0.000      -0.2960
+
+[5 rows x 14 columns]
 ```
 
 Let us go ahead and save this file in pickle and TSV format.
