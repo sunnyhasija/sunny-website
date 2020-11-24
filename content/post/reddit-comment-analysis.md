@@ -179,7 +179,8 @@ writefile = postSentimentDF.to_csv('/home/cantos/Dropbox/School/My Papers in Pro
 postSentimentDF.to_pickle("/home/cantos/Dropbox/School/My Papers in Progress/Crowdsourced Delivery/sentiment-search-result-flat-comment.pkl")
 ```
 
-Topic Modeling of Posts/Comments
+
+## Topic Modeling of Posts/Comments {#topic-modeling-of-posts-comments}
 
 
 ## Data Cleaning {#data-cleaning}
@@ -241,50 +242,4 @@ Finally, we save the df to a pickle so that we do not have to run through this w
 
 ```python
 TMdf.to_pickle("/home/cantos/Dropbox/School/My Papers in Progress/Crowdsourced Delivery/lemmatized-flat-comment-df.pkl")
-```
-
-
-## Data Modeling {#data-modeling}
-
-Make the imports that we need for this part of the analysis
-
-```python
-import pandas as pd
-import itertools
-import matplotlib.pyplot as plt
-# Text Cleaning
-import string
-import re
-import nltk
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-#Generating n-grams
-from gensim.models import Phrases
-from tqdm import tqdm
-```
-
-Next we read the pickle we created in the previous step and initiate an empty `document` list. Print the df to see what it looks like
-
-```python
-df = pd.read_pickle("/home/cantos/Dropbox/School/My Papers in Progress/Crowdsourced Delivery/lemmatized-flat-comment-df.pkl")
-docs=[]
-
-print(df)
-```
-
-```text
-           PK  ...                               total_comments_clean
-0      fl1x6n  ...  [[lol], [submit, request, wait, time, adjustme...
-1      fl20lo  ...  [[], [keep, advertising, time, 'll, complainin...
-2      fl257p  ...  [[everyone, logging, online, trying, make, mon...
-3      fl2d6i  ...  [[need, keep, posting, mentioned, dozen, time,...
-4      fl2evu  ...  [[expected, get, used, least, next, couple, mo...
-...       ...  ...                                                ...
-34801  jlso0p  ...  [[n't, figure, either, mine, 1-2], [app, said,...
-34802  jlsp32  ...  [[roll, thing, late, night/early, morning, bon...
-34803  jlspqr  ...  [[scorpio, season, ftw, ftw, meaning, apply, l...
-34804  jlsr1w  ...  [[lowkey, look, like, dakota, johnson, like], ...
-34805  jlstk3  ...  [[seems, like, one, party], [pretty, much, fif...
-
-[34806 rows x 4 columns]
 ```
