@@ -78,10 +78,10 @@ Deactivated Because a Racist manager not only called the police on me, but also 
 Postmates driver encounters deranged woman
 The MPLS cop that killed George Floyd can't get doordash delivered.
 I hit my 1000th delivery today. A few thoughts about my experiences.
-Never thought I'd get one of these...
 When the $3 orders can no longer keep you afloat
-Courier (rightfully) fears for his life
+Never thought I'd get one of these...
 This is why your food is cold
+Courier (rightfully) fears for his life
 So I was delivering the other day...
 ```
 
@@ -171,21 +171,120 @@ for index,comment in searchResult.iterrows():
 print(postSentimentDF.head())
 ```
 
-```text
-       PK                                              Title                     URL                 Time Comment_PK  ... Comment_Parent Comment_Neg Comment_Neu Comment_Pos Comment_Comp
-0  fshgt1                                                Lol  https://redd.it/fshgt1  2020-03-31 17:45:09    fm3gjaj  ...      t3_fshgt1       0.298       0.702       0.000      -0.9163
-1  gbzdoc  Well everyone. My first controversial delivery...  https://redd.it/gbzdoc  2020-05-02 03:14:19    fp8kqba  ...     t1_fp8dz0u       0.100       0.814       0.086      -0.0772
-2  gbzdoc  Well everyone. My first controversial delivery...  https://redd.it/gbzdoc  2020-05-02 03:14:19    fp968s1  ...     t1_fp8p0fs       0.000       0.860       0.140       0.8923
-3  hjgrtz                        I was hacked, $338 was lost  https://redd.it/hjgrtz  2020-07-01 19:07:32    fwme4y4  ...      t3_hjgrtz       0.025       0.930       0.045       0.2732
-4  hjgrtz                        I was hacked, $338 was lost  https://redd.it/hjgrtz  2020-07-01 19:07:32    fwmg9a5  ...     t1_fwme4y4       0.038       0.962       0.000      -0.2960
-
-[5 rows x 14 columns]
-```
-
 Let us go ahead and save this file in pickle and TSV format.
 
 ```python
 writefile = postSentimentDF.to_csv('/home/cantos/Dropbox/School/My Papers in Progress/Crowdsourced Delivery/sentiment-search-result-flat-comment.tsv', sep='\t')
 ## Write the file to pickle for other scripts to use.
 postSentimentDF.to_pickle("/home/cantos/Dropbox/School/My Papers in Progress/Crowdsourced Delivery/sentiment-search-result-flat-comment.pkl")
+```
+
+Topic Modeling of Posts/Comments
+
+
+## Data Cleaning {#data-cleaning}
+
+Before we actually get started with topic modelling, we have to do a bit of data cleaning.
+
+Let's start by importing the full dataset into a data frame for Topic Modeling.
+
+```python
+#Data Manipulation and Storage
+import pandas as pd
+
+# Text Cleaning
+import string
+import re
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+from tqdm import tqdm
+
+
+
+df = pd.read_pickle("/home/cantos/Dropbox/School/My Papers in Progress/Crowdsourced Delivery/flat-comment-df.pkl")
+df=df.drop_duplicates()
+```
+
+Initiate the stopwords and wordnet lemmatizers. After that we iterate through the "Comments" convert all words to lower case, remove any links that might be present. After that we output the cleaned, tokenized and lemmitized comments into another data frame.
+
+```python
+wordnet_lemmatizer = WordNetLemmatizer()
+stopwords_english = stopwords.words('english')
+
+for index, comment in tqdm(df.iterrows()):
+    text = comment['Comments']
+    #make string lowercase
+    text = text.lower()
+    # remove links
+    text = re.sub(r'^https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
+
+    #tokenize
+    tokens = nltk.word_tokenize(text)
+
+    #clean text
+    clean_text = []
+    for word in tokens:
+        if (word not in stopwords_english and word not in string.punctuation):
+            token = wordnet_lemmatizer.lemmatize(word)
+            clean_text.append(token)
+
+    #remove words of length 3 or smaller
+    clean_text = [token for token in clean_text if len(token) > 2]
+    #clean_text = " ".join(clean_text)
+    comment["Comments"] =clean_text
+TMdf= df.groupby(['PK', 'Title', 'URL'])['Comments'].apply(list).reset_index(name='total_comments_clean')
+```
+
+Finally, we save the df to a pickle so that we do not have to run through this whole process again.
+
+```python
+TMdf.to_pickle("/home/cantos/Dropbox/School/My Papers in Progress/Crowdsourced Delivery/lemmatized-flat-comment-df.pkl")
+```
+
+
+## Data Modeling {#data-modeling}
+
+Make the imports that we need for this part of the analysis
+
+```python
+import pandas as pd
+import itertools
+import matplotlib.pyplot as plt
+# Text Cleaning
+import string
+import re
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+#Generating n-grams
+from gensim.models import Phrases
+from tqdm import tqdm
+```
+
+Next we read the pickle we created in the previous step and initiate an empty `document` list. Print the df to see what it looks like
+
+```python
+df = pd.read_pickle("/home/cantos/Dropbox/School/My Papers in Progress/Crowdsourced Delivery/lemmatized-flat-comment-df.pkl")
+docs=[]
+
+print(df)
+```
+
+```text
+           PK  ...                               total_comments_clean
+0      fl1x6n  ...  [[lol], [submit, request, wait, time, adjustme...
+1      fl20lo  ...  [[], [keep, advertising, time, 'll, complainin...
+2      fl257p  ...  [[everyone, logging, online, trying, make, mon...
+3      fl2d6i  ...  [[need, keep, posting, mentioned, dozen, time,...
+4      fl2evu  ...  [[expected, get, used, least, next, couple, mo...
+...       ...  ...                                                ...
+34801  jlso0p  ...  [[n't, figure, either, mine, 1-2], [app, said,...
+34802  jlsp32  ...  [[roll, thing, late, night/early, morning, bon...
+34803  jlspqr  ...  [[scorpio, season, ftw, ftw, meaning, apply, l...
+34804  jlsr1w  ...  [[lowkey, look, like, dakota, johnson, like], ...
+34805  jlstk3  ...  [[seems, like, one, party], [pretty, much, fif...
+
+[34806 rows x 4 columns]
 ```
